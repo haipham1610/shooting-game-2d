@@ -4,7 +4,7 @@ public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 25f;
     [SerializeField] private float timeDestroy = 0.5f;
-
+    private float damage = 10f;
 
     void Start()
     {
@@ -20,4 +20,17 @@ public class PlayerBullet : MonoBehaviour
     {
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+        if (collision.CompareTag("Enemy"))
+        {
+            BaseEnemy enemy = collision.GetComponent<BaseEnemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
+	}
 }

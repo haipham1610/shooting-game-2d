@@ -1,17 +1,21 @@
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class GunController : MonoBehaviour
 {
+	public GunData gunData;
 	private float rotateOffset = 180f;
 	[SerializeField] private Transform firePosition;
 	[SerializeField] private GameObject bulletPrefab;
-	private float shootDelay = 0.15f;
+	[SerializeField] private GameObject muzzle;
 	private float nextShot;
 	private int maxAmmo = 30;
 	public int currentAmmo;
+	private GameObject currentGun;
+
+
 	void Start()
 	{
-		currentAmmo = maxAmmo;
+		currentAmmo = gunData.maxAmmo;
 	}
 
 	void Update()
@@ -49,9 +53,27 @@ public class Gun : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && Time.time > nextShot)
 		{
-			nextShot = Time.time + shootDelay;
-			Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
-			currentAmmo--;
+			//Rifle & Pistol
+			if (gunData.bulletsPerShot == 1)
+			{
+				nextShot = Time.time + gunData.shotDelay;
+				Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
+				Instantiate(muzzle, firePosition.position, transform.rotation, transform);
+				currentAmmo--;
+			}
+			//Shotgun
+			else
+			{
+				for (int i = 0; i < gunData.bulletsPerShot; i++)
+				{
+					float angle = Random.Range(-gunData.spreadAngle, gunData.spreadAngle);
+					Quaternion bulletRotation = Quaternion.Euler(0, 0, firePosition.eulerAngles.z + angle);
+					Instantiate(gunData.bulletPrefab, firePosition.position, bulletRotation);
+					Instantiate(muzzle, firePosition.position, transform.rotation, transform);
+
+				}
+			}
+
 		}
 	}
 
