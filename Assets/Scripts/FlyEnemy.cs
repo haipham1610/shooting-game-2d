@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class FlyEnemy : BaseEnemy
 {
+	[SerializeField] private GameObject explosionPrefabs;
+	private void CreateExplosion()
+	{
+		if (explosionPrefabs != null)
+		{
+			Instantiate(explosionPrefabs, transform.position, Quaternion.identity);
+		}
+	}
 	protected override void MoveToPlayer()
 	{
 		if (player != null && currentHp != 0)
@@ -10,15 +18,21 @@ public class FlyEnemy : BaseEnemy
 			FlipEnemy();
 		}
 	}
-	private void OnTriggerEnter2D(Collider2D collision)
+	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.CompareTag("Player"))
+		if (collision.collider.CompareTag("Player"))
 		{
-			player.TakeDamage(enterDamage);
+			Die();
+			CreateExplosion();
 		}
 	}
+	protected override void Die()
+	{
+		CreateExplosion();
+		Destroy(gameObject);
+	}
 
-	
+
 
 
 
