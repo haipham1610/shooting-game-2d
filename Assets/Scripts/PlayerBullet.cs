@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
@@ -21,9 +21,10 @@ public class PlayerBullet : MonoBehaviour
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-        if (collision.CompareTag("Enemy"))
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+        if (collision.CompareTag("Enemy") || collision.CompareTag("BossEnemy"))
         {
             BaseEnemy enemy = collision.GetComponent<BaseEnemy>();
             if (enemy != null)
@@ -32,5 +33,6 @@ public class PlayerBullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
-	}
+    }
+
 }

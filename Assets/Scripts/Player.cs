@@ -19,12 +19,15 @@ public class Player : MonoBehaviour
 	[SerializeField] private float maxHp = 100f;
 	[SerializeField] private Image hpBar;
 	private float currentHp;
-	void Start()
+
+    private SpawnEnemy spawnEnemy;
+    void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		rbSprite = rb.GetComponent<SpriteRenderer>();
 		animator = rb.GetComponent<Animator>();
-		ChangeGun(currentGun);
+        spawnEnemy = FindObjectOfType<SpawnEnemy>();
+        ChangeGun(currentGun);
 		currentHp = maxHp;
 		UpdateHpBar();
 	}
@@ -83,10 +86,11 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	private void Die()
+	public void Die()
 	{
 		animator.SetBool("isDeath", true);
-		Destroy(gameObject, 0.5f);
+        spawnEnemy.StopSpawning();
+        Destroy(gameObject, 0.5f);
 	}
 
 	private void UpdateHpBar()
@@ -96,5 +100,11 @@ public class Player : MonoBehaviour
 			hpBar.fillAmount = currentHp / maxHp;
 		}
 	}
+
+    public bool IsAlive()
+    {
+        return currentHp > 0;
+    }
+
 
 }
