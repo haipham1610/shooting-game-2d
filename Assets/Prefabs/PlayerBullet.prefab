@@ -139,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 25
   timeDestroy: 0.5
+  bloodPrefabs: {fileID: 4438340895381847476, guid: d8e6dce15b9a31b41802fd9e812b677a, type: 3}
