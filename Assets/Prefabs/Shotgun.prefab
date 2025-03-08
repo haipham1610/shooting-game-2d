@@ -132,7 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7460fd6c7912f8c42accf56d76700615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 73052bd9250f75a4fa288bb7bf3824d4, type: 2}
   firePosition: {fileID: 4620905991710738487}
   bulletPrefab: {fileID: 970657314045164248, guid: 9989309eb412d9d49a6ddfda0238dd5e, type: 3}
   muzzle: {fileID: 9208335200223697431, guid: 9553b8ec29932434f968d9483d565f62, type: 3}
   currentAmmo: 0
+  ammoText: {fileID: 9166735011061427971, guid: 50637b8349f484d4ab638d590ce898f7, type: 3}
