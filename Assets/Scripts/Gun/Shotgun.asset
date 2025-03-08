@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Shotgun
   shotDelay: 0.6
-  damage: 15
+  damage: 12
   bulletPrefab: {fileID: 970657314045164248, guid: 9989309eb412d9d49a6ddfda0238dd5e, type: 3}
   bulletsPerShot: 3
   spreadAngle: 20
-  maxAmmo: 12
+  maxAmmo: 15

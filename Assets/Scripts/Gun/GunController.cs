@@ -96,11 +96,11 @@ public class GunController : MonoBehaviour
 		{
 			if (currentAmmo > 0)
 			{
-				ammoText.text = currentAmmo.ToString();
+				ammoText.text = "Ammo: "+  currentAmmo.ToString() + "/" + gunData.maxAmmo;
 			}
 			else
 			{
-				ammoText.text = "0";
+				ammoText.text = "Ammo: " + 0 + "/" + gunData.maxAmmo;
 			}
 		}
 	}

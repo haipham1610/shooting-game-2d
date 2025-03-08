@@ -105,4 +105,10 @@ public class FinalBoss : BaseEnemy
 		nextSkillTime = Time.time+skillCooldown;
 		RandomSkill();
 	}
+
+	protected override void Die()
+	{
+		base.Die();
+		gameManager.BossDefeated(transform.position);
+	}
 }

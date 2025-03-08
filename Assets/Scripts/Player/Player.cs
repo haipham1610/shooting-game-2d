@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,11 @@ public class Player : MonoBehaviour
 	private Animator animator;
 
 	//Gun
-	[SerializeField] private GameObject[] guns;
 	[SerializeField] private Transform gunPosition;
-	private int currentGun = 0;
+	[SerializeField] private GameObject defaultGunPrefab;
+	[SerializeField] private List<GameObject> guns = new List<GameObject>();
+	private GameObject currentGun;
+	private int currentGunIndex = 0;
 
 	//HP
 	[SerializeField] private float maxHp = 100f;
@@ -25,7 +28,7 @@ public class Player : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		rbSprite = rb.GetComponent<SpriteRenderer>();
 		animator = rb.GetComponent<Animator>();
-		ChangeGun(currentGun);
+		EquipDefaultGun();
 		currentHp = maxHp;
 		UpdateHpBar();
 	}
@@ -57,20 +60,52 @@ public class Player : MonoBehaviour
 			}
 		}
 	}
+	void EquipDefaultGun()
+	{
+		GameObject defaultGun = Instantiate(defaultGunPrefab, gunPosition.position, Quaternion.identity, gunPosition);
+		defaultGun.transform.localPosition = Vector3.zero;
+		defaultGun.transform.localRotation = Quaternion.identity;
+		guns.Add(defaultGun); // Thêm vào danh sách
+		currentGun = defaultGun;
+	}
+
+	/* Pickup Gun */
+	public void PickupGun(GameObject newGunPrefab)
+	{
+		if (currentGun != null)
+		{
+			currentGun.SetActive(false);
+		}
+
+		GameObject newGun = Instantiate(newGunPrefab, gunPosition.position, Quaternion.identity, gunPosition);
+		newGun.transform.localPosition = Vector3.zero;
+		newGun.transform.localRotation = Quaternion.identity;
+		guns.Add(newGun); // Lưu vào danh sách
+		currentGun = newGun;
+		currentGunIndex = guns.Count - 1; // Update current gun index
+		currentGun.SetActive(true);
+	}
 
 	/* Change Gun */
 	void EquipGun()
 	{
+		if (guns.Count < 2) { return; }
 		if (Input.GetKeyDown(KeyCode.Alpha1)) ChangeGun(0);
-		if (Input.GetKeyDown(KeyCode.Alpha2)) ChangeGun(1);
-		if (Input.GetKeyDown(KeyCode.Alpha3)) ChangeGun(2);
+		if (Input.GetKeyDown(KeyCode.Alpha2) && guns.Count > 1) ChangeGun(1);
+		if (Input.GetKeyDown(KeyCode.Alpha3) && guns.Count > 2) ChangeGun(2);
 	}
 	void ChangeGun(int gunIndex)
 	{
-		for (int i = 0; i < guns.Length; i++)
+		if (gunIndex < 0 || gunIndex >= guns.Count) return;
+
+		if (currentGun != null)
 		{
-			guns[i].gameObject.SetActive(i == gunIndex);
+			currentGun.SetActive(false);
 		}
+
+		currentGun = guns[gunIndex];
+		currentGun.SetActive(true);
+		currentGunIndex = gunIndex;
 	}
 	/* Change Gun */
 

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Boss_1 : BaseEnemy
 {
+	[SerializeField] private GameObject gunPickupPrefab;
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player"))
@@ -15,5 +16,15 @@ public class Boss_1 : BaseEnemy
 		{
 			player.TakeDamage(stayDamage);
 		}
+	}
+
+	protected override void Die()
+	{
+		base.Die();
+		if(gunPickupPrefab != null)
+		{
+			Instantiate(gunPickupPrefab, transform.position, Quaternion.identity);
+		}
+		gameManager.BossDefeated(transform.position);
 	}
 }

@@ -18,4 +18,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 970657314045164248, guid: 9989309eb412d9d49a6ddfda0238dd5e, type: 3}
   bulletsPerShot: 1
   spreadAngle: 0
-  maxAmmo: 35
+  maxAmmo: 30

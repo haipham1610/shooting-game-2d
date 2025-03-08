@@ -10,6 +10,9 @@ public abstract class BaseEnemy : MonoBehaviour
 	[SerializeField] protected Image hpBar;
 	[SerializeField] protected float enterDamage = 10f;
 	[SerializeField] protected float stayDamage = 1f;
+	private bool isDeath = false;
+	protected GameManager gameManager;
+	protected SpawnEnemy spawnEnemy;
 	private Animator animator;
 
 	protected virtual void Start()
@@ -18,6 +21,8 @@ public abstract class BaseEnemy : MonoBehaviour
 		currentHp = maxHp;
 		UpdateHpBar();
 		animator = GetComponentInChildren<Animator>();
+		gameManager = FindAnyObjectByType<GameManager>();
+		spawnEnemy = FindAnyObjectByType<SpawnEnemy>();
 	}
 
 	protected virtual void Update()
@@ -47,10 +52,12 @@ public abstract class BaseEnemy : MonoBehaviour
 	//Get damage
 	public void TakeDamage(float damage)
 	{
+		if (isDeath) return;
+
 		currentHp -= damage;
 		currentHp = Mathf.Max(currentHp, 0);
 		UpdateHpBar();
-		if (currentHp <= 0)
+		if (currentHp == 0)
 		{
 			Die();
 		}
@@ -59,7 +66,12 @@ public abstract class BaseEnemy : MonoBehaviour
 	//Die
 	protected virtual void Die()
 	{
-		animator.SetBool("isDeath", true);
+		if (isDeath == false)
+		{
+			isDeath = true;
+			gameManager.AddProccessBar();
+			animator.SetBool("isDeath", true);
+		}
 		Destroy(gameObject, 0.5f);
 	}
 

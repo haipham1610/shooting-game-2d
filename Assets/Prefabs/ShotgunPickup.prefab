@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4282069437539857493
+--- !u!1 &3536549287397908449
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,71 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2632560306344270757}
+  - component: {fileID: 8410692111770729975}
+  - component: {fileID: 7387901618572209671}
+  - component: {fileID: 2932587939070188629}
+  - component: {fileID: 3624778394029112166}
   m_Layer: 0
-  m_Name: FirePosition
+  m_Name: ShotgunPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2632560306344270757
+--- !u!4 &8410692111770729975
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4282069437539857493}
+  m_GameObject: {fileID: 3536549287397908449}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.542, y: 0.14, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.012, y: 0.712, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2728141364361892259}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4784868886464503603
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2728141364361892259}
-  - component: {fileID: 3454049581492723074}
-  - component: {fileID: 188834075869154414}
-  - component: {fileID: 7526428033469732694}
-  m_Layer: 0
-  m_Name: Pistol
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2728141364361892259
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784868886464503603}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03999996, y: -1.2600002, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2632560306344270757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3454049581492723074
+--- !u!212 &7387901618572209671
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784868886464503603}
+  m_GameObject: {fileID: 3536549287397908449}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -110,42 +78,24 @@ SpriteRenderer:
   m_SortingLayerID: -1927863967
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1bec81f0b7f7ef498903e0bcd6dbede, type: 3}
-  m_Color: {r: 0.9056604, g: 0.56767553, b: 0.26059094, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8618acc40d793e648a9918476100eb70, type: 3}
+  m_Color: {r: 0.8862746, g: 0.43137258, b: 0.3372549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.68266666, y: 0.68266666}
+  m_Size: {x: 2.048, y: 2.048}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &188834075869154414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784868886464503603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7460fd6c7912f8c42accf56d76700615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 924f014b5342e5a4faab95e641b7784b, type: 2}
-  firePosition: {fileID: 2632560306344270757}
-  bulletPrefab: {fileID: 970657314045164248, guid: 9989309eb412d9d49a6ddfda0238dd5e, type: 3}
-  muzzle: {fileID: 9208335200223697431, guid: 9553b8ec29932434f968d9483d565f62, type: 3}
-  currentAmmo: 0
-  ammoText: {fileID: 9166735011061427971, guid: 50637b8349f484d4ab638d590ce898f7, type: 3}
---- !u!61 &7526428033469732694
+--- !u!61 &2932587939070188629
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784868886464503603}
+  m_GameObject: {fileID: 3536549287397908449}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -169,19 +119,32 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.15488255, y: 0.04045248}
+  m_Offset: {x: 0.16867757, y: 0.12143457}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.44393474, y: 0.22986755}
+    pivot: {x: 0.41763788, y: 0.24514376}
     oldSize: {x: 2.048, y: 2.048}
-    newSize: {x: 0.68266666, y: 0.68266666}
+    newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5512457, y: 1.4070268}
+  m_Size: {x: 2.048, y: 1.2469783}
   m_EdgeRadius: 0
+--- !u!114 &3624778394029112166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536549287397908449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22a57f536e52cd448a7c3cb270be367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPrefab: {fileID: 5747665723893298149, guid: 83070799a8dd89343869f1c23f85f500, type: 3}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3762680834211396911}
   - component: {fileID: 5682895901423127618}
   - component: {fileID: 195135326946900407}
+  - component: {fileID: -1002493237755491774}
   m_Layer: 0
   m_Name: FinalBossBullet
   m_TagString: FinalBossBullet
@@ -147,3 +148,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1002493237755491774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986006881397177162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02ec981be536944aa7a2fd140edb61b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
