@@ -8,6 +8,7 @@ public class FinalBoss : BaseEnemy
 	[SerializeField] private float hpValue = 100f;
 	[SerializeField] private GameObject miniEnemy;
 	[SerializeField] private float skillCooldown = 2f;
+	[SerializeField] private GameObject winnerPrefab;
 	private float nextSkillTime = 0f;
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -110,5 +111,6 @@ public class FinalBoss : BaseEnemy
 	{
 		base.Die();
 		gameManager.BossDefeated(transform.position);
+		Instantiate(winnerPrefab, transform.position, Quaternion.identity);
 	}
 }

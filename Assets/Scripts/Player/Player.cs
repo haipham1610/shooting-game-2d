@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
 	[SerializeField] private Image hpBar;
 	private float currentHp;
 
+	//game manager
+	[SerializeField] private GameManager gameManager;
+	private AudioManager audioManager;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -31,12 +34,19 @@ public class Player : MonoBehaviour
 		EquipDefaultGun();
 		currentHp = maxHp;
 		UpdateHpBar();
+		audioManager=FindAnyObjectByType<AudioManager>();
 	}
 
 	void Update()
 	{
 		Move();
 		EquipGun();
+
+		//Pause game
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			gameManager.PauseMenu();
+		}
 	}
 
 	//Di chuyen
@@ -124,8 +134,8 @@ public class Player : MonoBehaviour
 	//Die
 	private void Die()
 	{
-		animator.SetBool("isDeath", true);
-		Destroy(gameObject, 0.5f);
+		gameManager.GameOverMenu();
+		audioManager.StopAudio();
 	}
 
 	//Bar
@@ -146,4 +156,12 @@ public class Player : MonoBehaviour
 			UpdateHpBar();
 		}
 	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+        if (collision.CompareTag("Winner"))
+        {
+			gameManager.Winner();
+        }
+    }
 }

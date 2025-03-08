@@ -226,13 +226,14 @@ MonoBehaviour:
   maxHp: 1000
   hpBar: {fileID: 9204874351371976512}
   enterDamage: 5
-  stayDamage: 0.2
+  stayDamage: 0.5
   bulletPrefab: {fileID: 3986006881397177162, guid: eb8621a6b808c4c4bbfceb11ebe0e116, type: 3}
   firePosition: {fileID: 5497284204269497289}
   speedFire: 5
   hpValue: 100
   miniEnemy: {fileID: 3917747021650277258, guid: 3bf40243ed5d591479f5eff868436fec, type: 3}
-  skillCooldown: 3
+  skillCooldown: 2.5
+  winnerPrefab: {fileID: 5671403384169910574, guid: 5c5881ea29716c14fae76bc9f06c82b6, type: 3}
 --- !u!1001 &4590007117968211559
 PrefabInstance:
   m_ObjectHideFlags: 0

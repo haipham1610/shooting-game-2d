@@ -14,15 +14,19 @@ public class GameManager : MonoBehaviour
 	//Spawn
 	protected SpawnEnemy spawnEnemy;
 	private bool isCalledBoss = false;
+
+	//MENU
+	[SerializeField] private GameObject mainMenu;
+	[SerializeField] private GameObject gameOverMenu;
+	[SerializeField] private GameObject pauseMenu;
+	[SerializeField] private GameObject winnerMenu;
+
+	[SerializeField] private AudioManager audioManager;	
 	void Start()
 	{
-		spawnEnemy = FindAnyObjectByType<SpawnEnemy>();	
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
+		spawnEnemy = FindAnyObjectByType<SpawnEnemy>();
+		MainMenu();
+		UpdateProcessBar();
 	}
 
 	public void AddProccessBar()
@@ -58,6 +62,61 @@ public class GameManager : MonoBehaviour
 	public void SetBossCalled(bool value)
 	{
 		isCalledBoss = value;
+	}
+
+	/* *
+	 * MENU
+	 * */
+	public void MainMenu()
+	{
+		mainMenu.SetActive(true);
+		gameOverMenu.SetActive(false);
+		pauseMenu.SetActive(false);
+		winnerMenu.SetActive(false);
+		Time.timeScale = 0f;
+	}
+	public void GameOverMenu()
+	{
+		mainMenu.SetActive(false);
+		gameOverMenu.SetActive(true);
+		pauseMenu.SetActive(false);
+		winnerMenu.SetActive(false);
+		Time.timeScale = 0f;
+	}
+	public void PauseMenu()
+	{
+		mainMenu.SetActive(false);
+		gameOverMenu.SetActive(false);
+		pauseMenu.SetActive(true);
+		winnerMenu.SetActive(false);
+		Time.timeScale = 0f;
+	}
+
+	public void StartGame()
+	{
+		mainMenu.SetActive(false);
+		gameOverMenu.SetActive(false);
+		pauseMenu.SetActive(false);
+		winnerMenu.SetActive(false);
+		Time.timeScale = 1f;
+		audioManager.PlayDefaultAudio();
+	}
+	public void ResumeGame()
+	{
+		mainMenu.SetActive(false);
+		gameOverMenu.SetActive(false);
+		pauseMenu.SetActive(false);
+		winnerMenu.SetActive(false);
+		Time.timeScale = 1f;
+	}
+
+	public void Winner()
+	{
+		mainMenu.SetActive(false);
+		gameOverMenu.SetActive(false);
+		pauseMenu.SetActive(false);
+		winnerMenu.SetActive(true);
+		Time.timeScale = 0f;
 	}
 
 }

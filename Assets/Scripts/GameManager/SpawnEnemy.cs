@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
@@ -11,20 +11,22 @@ public class SpawnEnemy : MonoBehaviour
 
 	[SerializeField] private int bossLevel = 1;
 	[SerializeField] private int enemiesSpawned = 0;
-	[SerializeField] private int maxEnemiesPerLevel = 20; // Level 1
+	[SerializeField] private int maxEnemiesPerLevel = 15; // Level 1
 	[SerializeField] private bool bossSpawned = false;
 	[SerializeField] private GameObject[] gunPickupPrefabs;
 	private GameManager gameManager;
+	private AudioManager audioManager;
 
 	void Start()
 	{
 		gameManager = FindAnyObjectByType<GameManager>();
 		StartCoroutine(SpawnEnemyCoroutine());
+		audioManager = FindAnyObjectByType<AudioManager>();
 	}
 
 	private IEnumerator SpawnEnemyCoroutine()
 	{
-		while (true)
+		while (bossLevel <= 3)
 		{
 			if (enemiesSpawned >= maxEnemiesPerLevel)
 			{
@@ -35,6 +37,7 @@ public class SpawnEnemy : MonoBehaviour
 					SpawnBoss();
 					bossSpawned = true;
 					gameManager.SetBossCalled(true);
+					audioManager.PlayBossAudio();
 				}
 				yield return null;
 			}
@@ -54,6 +57,10 @@ public class SpawnEnemy : MonoBehaviour
 	private GameObject GetEnemyForCurrentLevel()
 	{
 		GameObject[] enemiesArray = GetEnemiesArray();
+		if (bossLevel > 3)
+		{
+			return null;
+		}
 		return enemiesArray[Random.Range(0, enemiesArray.Length - 1)];
 	}
 
@@ -84,18 +91,22 @@ public class SpawnEnemy : MonoBehaviour
 	public void OnBossDefeated()
 	{
 		bossLevel++;
+		if (bossLevel > 3)
+		{
+			StopAllCoroutines();
+			return;
+		}
 		enemiesSpawned = 0; // Reset quantity quai
 		bossSpawned = false; // Reset status boss
 		gameManager.SetBossCalled(false);
-
+		audioManager.PlayDefaultAudio();
 		switch (bossLevel)
 		{
 			case 2:
-				timeBetweenSpawns++;
+				timeBetweenSpawns--;
 				maxEnemiesPerLevel = 20; // Level 2 
 				break;
 			case 3:
-				timeBetweenSpawns++;
 				maxEnemiesPerLevel = 25; // Level 3 
 				break;
 		}

@@ -12,10 +12,11 @@ public class GunController : MonoBehaviour
 	public int currentAmmo;
 	private GameObject currentGun;
 	[SerializeField] private TextMeshProUGUI ammoText;
-
+	 private AudioManager audioManager;
 	void Start()
 	{
 		currentAmmo = gunData.maxAmmo;
+		audioManager = FindAnyObjectByType<AudioManager>();	
 	}
 
 	void Update()
@@ -76,6 +77,7 @@ public class GunController : MonoBehaviour
 				}
 				currentAmmo--;
 			}
+			audioManager.PlayShootSound();
 			UpdateAmmoText();
 		}
 	}
@@ -83,7 +85,7 @@ public class GunController : MonoBehaviour
 	//Reload
 	void Reload()
 	{
-		if (Input.GetMouseButtonDown(1) && currentAmmo < gunData.maxAmmo)
+		if (currentAmmo < gunData.maxAmmo)
 		{
 			currentAmmo = gunData.maxAmmo;
 			UpdateAmmoText();
