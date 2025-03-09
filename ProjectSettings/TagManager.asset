@@ -9,6 +9,7 @@ TagManager:
   - Energy
   - Explosion
   - FinalBossBullet
+  - Winner
   layers:
   - Default
   - TransparentFX
