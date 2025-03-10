@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efb72cc65358e44b943df7ca0be1ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMoveSpeed: 3
-  maxHp: 600
+  enemyMoveSpeed: 5
+  maxHp: 700
   hpBar: {fileID: 3969752600841599061}
-  enterDamage: 10
+  enterDamage: 12
   stayDamage: 1
   flyEnemy: {fileID: 4064858333158966159, guid: ae99ac9a1fb6f0d4795239dce3510e49, type: 3}
   skillCooldown: 6

@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85428d83a5a64f248b235c5ccae83f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMoveSpeed: 3
-  maxHp: 300
+  enemyMoveSpeed: 4
+  maxHp: 500
   hpBar: {fileID: 860813525512420689}
-  enterDamage: 12
+  enterDamage: 15
   stayDamage: 1
   gunPickupPrefab: {fileID: 7072026497445349828, guid: d5af95cbd2568d841b8fc03aed868daa, type: 3}
 --- !u!95 &331171684754506861
