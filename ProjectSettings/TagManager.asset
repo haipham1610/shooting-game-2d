@@ -8,6 +8,8 @@ TagManager:
   - Health
   - Energy
   - Explosion
+  - FinalBossBullet
+  - Winner
   layers:
   - Default
   - TransparentFX
@@ -74,6 +76,12 @@ TagManager:
     locked: 0
   - name: Energy
     uniqueID: 2709651451
+    locked: 0
+  - name: Blood
+    uniqueID: 178968627
+    locked: 0
+  - name: UI
+    uniqueID: 2727251269
     locked: 0
   m_RenderingLayers:
   - Default

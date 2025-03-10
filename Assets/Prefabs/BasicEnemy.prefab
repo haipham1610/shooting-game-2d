@@ -190,11 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e378341c5f1459468a742aa834913f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMoveSpeed: 1
+  enemyMoveSpeed: 3
   maxHp: 50
   hpBar: {fileID: 2880752091620121178}
   enterDamage: 10
-  stayDamage: 0.5
+  stayDamage: 1
 --- !u!1001 &7491403281623161725
 PrefabInstance:
   m_ObjectHideFlags: 0
